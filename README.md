@@ -1,34 +1,96 @@
-# 📊 Análise de Campanhas de Marketing e Segmentação de Clientes
+# Análise de Marketing 360°: Do Comportamento do Cliente à Estratégia de Mídia Digital
 
-## 1. Resumo do Projeto 📝
-O presente projeto tem como objetivo analisar o comportamento dos clientes de uma empresa de varejo para identificar os perfis com maior probabilidade de responder a campanhas de marketing. A análise visa otimizar futuros investimentos na área por meio de uma segmentação de clientes baseada em dados, permitindo um direcionamento de campanha mais eficiente e com maior Retorno Sobre o Investimento (ROI).
+*Data de Criação: 04 de Julho de 2025*
 
-## 2. Fonte dos Dados 📚
-Os dados utilizados foram obtidos do dataset "Marketing Campaign", disponibilizado na plataforma Kaggle. O conjunto de dados contém informações demográficas, hábitos de consumo e respostas a campanhas anteriores de 2.205 clientes.
+## 📜 Resumo Executivo
 
-## 3. Metodologia e Análise Exploratória de Dados (EDA) 🔬
-A análise foi desenvolvida em ambiente Python, utilizando principalmente as bibliotecas Pandas para manipulação de dados e Matplotlib/Seaborn para visualização. As etapas principais incluíram:
+Este projeto apresenta uma análise de ponta a ponta com o objetivo de otimizar os investimentos em marketing de uma empresa de varejo. A análise foi dividida em duas fases:
+1.  **Análise Interna (Python):** Utilizando dados de campanhas anteriores, identificamos o perfil dos clientes com maior propensão à conversão e maior Retorno Sobre o Investimento (ROI).
+2.  **Análise Externa (Power BI):** Com base em dados de mercado (Sprout Social), validamos nossa hipótese e identificamos os canais de mídia digital mais eficazes para alcançar nosso público-alvo de alto valor.
 
-* **🧹 Limpeza e Preparação dos Dados:** Verificação da integridade dos dados, tratamento de valores ausentes (o dataset estava completo) e remoção de colunas consideradas irrelevantes para a análise (`Z_CostContact`, `Z_Revenue`), por não apresentarem variabilidade.
-* **🛠️ Engenharia de Atributos (Feature Engineering):** Criação de novas variáveis para aprofundar a análise. Foi criada a variável `TotalKids`, a partir da soma das colunas `Kidhome` e `Teenhome`, para consolidar o impacto da estrutura familiar no comportamento do consumidor.
-* **🔍 Análise de Segmentos:** Utilização da função `groupby` para agregar dados e comparar métricas-chave (como renda e gastos totais) entre diferentes segmentos de clientes, com foco naqueles que responderam e os que não responderam à última campanha.
+A conclusão principal aponta para uma estratégia focada em **YouTube e Facebook** para campanhas de conversão de alto ROI, devido à sua dominância nos segmentos de público de alta renda, que foram previamente identificados como os mais lucrativos para a empresa.
 
-## 4. Principais Resultados (Key Findings) 💡
-A análise exploratória revelou três fatores principais que se correlacionam fortemente com a propensão de um cliente a responder a uma campanha de marketing:
+## 🎯 O Problema de Negócio
 
-* **💰 Perfil de Renda:** Clientes que responderam positivamente à campanha possuem uma renda média significativamente superior ($60.209) em comparação aos não respondentes ($50.094).
-* **🛒 Comportamento de Compra Prévio:** O gasto total médio dos respondentes ($924) é aproximadamente o dobro do gasto dos não respondentes ($498). Isso indica que os clientes já engajados e de alto valor são os mais receptivos a novas ofertas.
-    ![Gráfico de Gasto Total por Resposta à Campanha](https://github.com/user-attachments/assets/ee02fc9a-58c5-45d3-832a-2ce4ec194ca7)
-* **👨‍👩‍👧‍👦 Estrutura Familiar:** Observa-se uma forte correlação negativa entre o número de filhos na residência e a resposta à campanha. Clientes sem filhos não apenas respondem com maior frequência, como também representam o segmento de maior consumo ($1.041 em média).
-    ![Gráfico de Gasto Total por Número de Filhos](https://github.com/user-attachments/assets/02464e69-6fdb-4bb0-a981-8bbfd0917196)
+A questão central que guiou este projeto foi: **"Como podemos direcionar nossos investimentos em campanhas de marketing de forma mais inteligente para aumentar a taxa de resposta e maximizar o retorno financeiro?"**
 
-## 5. Recomendações Estratégicas 🎯
-Com base nos resultados obtidos, as seguintes ações são recomendadas para otimizar futuras campanhas de marketing:
+## 🛠️ Ferramentas e Metodologia
 
-1.  **🏆 Público-Alvo Prioritário:** Direcionar os investimentos de marketing para o segmento de clientes com maior potencial de ROI: indivíduos e casais de alta renda e sem filhos (perfil "DINKs" - Dual Income, No Kids).
-2.  **📡 Estratégia de Canais:** Alocar o orçamento de mídia em canais digitais que permitam segmentação demográfica e de interesses avançada (ex: Instagram, Twitter, Threads) e explorar plataformas de nicho com alto engajamento do público-alvo, como o ecossistema de jogos eletrônicos.
-3.  **🎨 Direcionamento Criativo:** Desenvolver campanhas com mensagens e elementos visuais que ressoem com o estilo de vida do público-alvo, focando em temas de lazer, hobbies e consumo pessoal, em detrimento de narrativas familiares tradicionais.
+* **Análise Exploratória e Limpeza de Dados:** Python, com as bibliotecas Pandas, Matplotlib e Seaborn.
+* **Dashboard Interativo e Storytelling com Dados:** Microsoft Power BI, com fórmulas DAX para criação de KPIs.
+* **Fontes de Dados:**
+    * Dataset "Marketing Campaign" (Kaggle) - Dados internos de clientes.
+    * Dados Demográficos de Mídias Sociais (Sprout Social, 2021) - Dados externos de mercado.
+* **Versionamento:** GitHub.
 
-## 6. Ferramentas Utilizadas 🛠️
-* **Linguagem:** Python
-* **Bibliotecas:** Pandas, Matplotlib/Seaborn
+---
+
+## 🔬 Parte I: Análise do Comportamento do Cliente (Dados Internos)
+
+Nesta primeira fase, o objetivo foi olhar para dentro de casa e entender: **Quem são nossos melhores clientes?**
+
+### Principais Descobertas:
+
+1.  **Renda é um Fator Decisivo:** Clientes que responderam positivamente às campanhas possuem uma renda média significativamente superior **($60,209)** em comparação aos não respondentes **($50,094)**.
+
+2.  **Histórico de Compra Importa:** O gasto total médio dos respondentes **($924)** é quase o dobro do gasto dos não respondentes **($498)**, indicando que clientes de alto valor já engajados são mais receptivos.
+
+    ![image](https://github.com/user-attachments/assets/db7a59ec-a55c-4a91-8587-085e85a7bcfb)
+
+
+3.  **Estrutura Familiar Influencia o Consumo:** Clientes sem filhos não apenas respondem com mais frequência, como também representam o segmento de maior consumo **($1,041 em média)**.
+
+    ![image](https://github.com/user-attachments/assets/95856b04-d447-47cf-bc81-ea3b680d5014)
+
+
+### Conclusão da Parte I:
+
+A análise interna gerou uma hipótese clara: nosso público-alvo de maior potencial de ROI é composto por **indivíduos ou casais de alta renda e sem filhos (perfil "DINKs")**.
+
+---
+
+## 📊 Parte II: Validação de Mercado e Análise de Canais (Dashboard em Power BI)
+
+Com a hipótese em mãos, a próxima pergunta foi: **Onde encontramos esse público na internet?** Para responder a isso, construímos um dashboard interativo no Power BI.
+
+### O Dashboard de Decisão Estratégica
+
+Este dashboard cruza dados de uso de plataformas com demografia de idade e renda, permitindo uma visualização clara das oportunidades de mercado.
+
+
+**Visão Geral do Dashboard**
+
+![Captura de tela 2025-07-04 172720](https://github.com/user-attachments/assets/8b9d5570-fb82-4ad1-b169-07a23c2b4afa)
+
+
+![Captura de tela 2025-07-04 172738](https://github.com/user-attachments/assets/d2b22730-a5b7-4e9d-910c-61c181df8ad2)
+
+
+
+
+---
+
+## 🏆 A Grande Síntese: Conclusões Finais e Recomendação Estratégica
+
+A mágica acontece quando conectamos os pontos entre as duas análises:
+
+* A **Análise Interna** nos disse **QUEM** procurar: o público de alta renda.
+* A **Análise Externa** (via Power BI) nos disse **ONDE** encontrá-los.
+
+O cruzamento dos dados revelou que as plataformas **YouTube (com 83% de penetração)** e **Facebook (74%)** são os canais com o maior alcance dentro do segmento de renda superior a US$ 75.000, validando e refinando nossa estratégia.
+
+### Recomendação Final:
+
+Com base na análise 360°, a seguinte estratégia de alocação de investimentos em marketing é recomendada:
+
+1.  **Para Campanhas de Máximo ROI e Conversão:**
+    * **Foco Primário:** **YouTube** e **Facebook**. Esses canais oferecem a maior concentração do nosso público-alvo mais lucrativo.
+
+2.  **Para Campanhas de Alcance e Reconhecimento de Marca (Público Jovem):**
+    * **Foco Secundário:** **Instagram** e **X**. São essenciais para construir presença com a próxima geração de consumidores, embora possuam menor penetração no segmento de alta renda.
+
+## 🚀 Como Explorar este Projeto
+
+* **Para ver a análise de dados inicial:** Abra o notebook `marketing_segmentacao.ipynb`.
+* **Para explorar o dashboard interativo:** Baixe o arquivo `relatorio_final.pbix` e abra-o com o Power BI Desktop.
+* **Os dados brutos** utilizados estão na pasta `/dados`.  
