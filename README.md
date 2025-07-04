@@ -93,4 +93,4 @@ Com base na análise 360°, a seguinte estratégia de alocação de investimento
 
 * **Para ver a análise de dados inicial:** Abra o notebook `marketing_segmentacao.ipynb`.
 * **Para explorar o dashboard interativo:** Baixe o arquivo `relatorio_final.pbix` e abra-o com o Power BI Desktop.
-* **Os dados brutos** utilizados estão na pasta `/dados`.  
+
