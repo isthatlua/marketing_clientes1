@@ -35,7 +35,7 @@ Nesta primeira fase, o objetivo foi olhar para dentro de casa e entender: **Quem
 
 2.  **Histórico de Compra Importa:** O gasto total médio dos respondentes **($924)** é quase o dobro do gasto dos não respondentes **($498)**, indicando que clientes de alto valor já engajados são mais receptivos.
 
-    ![image](https://github.com/user-attachments/assets/db7a59ec-a55c-4a91-8587-085e85a7bcfb)
+    ![image](https://github.com/user-attachments/assets/de1b7e05-037a-4209-881e-acaa50f39a36)
 
 
 3.  **Estrutura Familiar Influencia o Consumo:** Clientes sem filhos não apenas respondem com mais frequência, como também representam o segmento de maior consumo **($1,041 em média)**.
