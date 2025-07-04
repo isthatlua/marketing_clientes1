@@ -88,9 +88,80 @@ Com base na análise 360°, a seguinte estratégia de alocação de investimento
 
 2.  **Para Campanhas de Alcance e Reconhecimento de Marca (Público Jovem):**
     * **Foco Secundário:** **Instagram** e **X**. São essenciais para construir presença com a próxima geração de consumidores, embora possuam menor penetração no segmento de alta renda.
+  
+
+## 🧠 Lógica de Negócio e Medidas DAX Implementadas
+
+Para transformar os dados brutos em insights acionáveis, foram criadas diversas medidas utilizando a linguagem DAX no Power BI. Abaixo estão documentadas as principais medidas que servem como motor para os KPIs do dashboard.
+
+---
+
+### Medida 1: `Plataforma Lider (18-24)`
+
+* **Objetivo:** Identificar dinamicamente o nome da plataforma com a maior porcentagem de uso entre o público na faixa etária de 18 a 24 anos, destacando o principal canal para este segmento.
+* **Código DAX:**
+    ```dax
+    Plataforma Lider (18-24) =
+    VAR TabelaFiltrada =
+        FILTER (
+            'demografia_idade',
+            'demografia_idade'[Faixa Etária] = "18-24"
+        )
+    VAR MaxPorcentagem =
+        MAXX ( TabelaFiltrada, 'demografia_idade'[Porcentagem] )
+    VAR Resultado =
+        LOOKUPVALUE (
+            'demografia_idade'[Plataforma],
+            'demografia_idade'[Porcentagem], MaxPorcentagem,
+            'demografia_idade'[Faixa Etária], "18-24"
+        )
+    RETURN
+        Resultado
+    ```
+
+---
+
+### Medida 2: `Plataforma Lider (Alta Renda)`
+
+* **Objetivo:** Identificar o nome da plataforma com maior penetração no segmento de usuários com renda superior a US$ 75.000, apontando o canal de maior potencial de ROI.
+* **Código DAX:**
+    ```dax
+    Plataforma Lider (Alta Renda) =
+    VAR TabelaFiltrada =
+        FILTER (
+            'demografia_renda',
+            'demografia_renda'[Faixa de Renda (USD)] = "> $75k"
+        )
+    VAR MaxPorcentagem =
+        MAXX ( TabelaFiltrada, 'demografia_renda'[Porcentagem] )
+    VAR Resultado =
+        LOOKUPVALUE (
+            'demografia_renda'[Plataforma],
+            'demografia_renda'[Porcentagem], MaxPorcentagem,
+            'demografia_renda'[Faixa de Renda (USD)], "> $75k"
+        )
+    RETURN
+        Resultado
+    ```
+
+---
+
+### Medida 3: `Pct Instagram (Alta Renda)`
+
+* **Objetivo:** Isolar e exibir a porcentagem específica de alcance do Instagram no público de alta renda, permitindo uma comparação direta com o líder de mercado e servindo como um termômetro para a estratégia atual.
+* **Código DAX:**
+    ```dax
+    Pct Instagram (Alta Renda) =
+    CALCULATE (
+        SUM ( 'demografia_renda'[Porcentagem] ),
+        'demografia_renda'[Plataforma] = "Instagram",
+        'demografia_renda'[Faixa de Renda (USD)] = "> $75k"
+    )
+    ```
 
 ## 🚀 Como Explorar este Projeto
 
 * **Para ver a análise de dados inicial:** Abra o notebook `marketing_segmentacao.ipynb`.
 * **Para explorar o dashboard interativo:** Baixe o arquivo `relatorio_final.pbix` e abra-o com o Power BI Desktop.
+* * **Os dados brutos** utilizados estão no arquivo `ifood_df.csv`.
 
